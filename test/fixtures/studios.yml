@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  weekday_fee: 1
+  weekend_fee: 1
+  area: 1
+
+two:
+  name: MyString
+  weekday_fee: 1
+  weekend_fee: 1
+  area: 1

@@ -1,0 +1,25 @@
+<% if admin_signed_in? %>
+  <%= link_to "トップ", admins_path%>
+  <%= link_to "問い合わせ", admins_contacts_path%>
+  <%= link_to "予約一覧", admins_reservations_path%>
+  <%= link_to "会員検索", admins_users_path%>
+  <%= link_to "スタジオ", admins_studios_path%>
+  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+<% elsif user_signed_in? %>
+  <%= link_to "トップ", root_path%>
+  <%= link_to "アバウト", about_path%>
+  <%= link_to "予約", reservations_path%>
+  <%= link_to "会員情報", user_path%>
+  <%= link_to "問い合わせ", new_contact_path%>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "トップ", root_path %>
+  <%= link_to "アバウト", about_path %>
+  <%= link_to "スタジオ", studios_path %>
+  <%= link_to "アクセス", access_path %>
+  <%= link_to "会員登録", new_user_registration_path %>
+  <%= link_to "ログイン", new_user_session_path %>
+  <%= link_to "問い合わせ", new_contact_path %>
+<% end %>
+
+

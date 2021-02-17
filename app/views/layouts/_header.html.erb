@@ -8,8 +8,10 @@
 <% elsif user_signed_in? %>
   <%= link_to "トップ", root_path%>
   <%= link_to "アバウト", about_path%>
+  <%= link_to "スタジオ", studios_path %>
   <%= link_to "予約", reservations_path%>
   <%= link_to "会員情報", user_path%>
+  <%= link_to "アクセス", access_path %>
   <%= link_to "問い合わせ", new_contact_path%>
   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 <% else %>

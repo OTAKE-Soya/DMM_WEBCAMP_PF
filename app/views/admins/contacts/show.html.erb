@@ -1,2 +1,9 @@
-<h1>Admins::Contacts#show</h1>
-<p>Find me in app/views/admins/contacts/show.html.erb</p>
+<%= @contact.title %>
+<%= @contact.name %>
+<%= @contact.body %>
+<%= @contact.status_name %>
+<% if @contact.processed_status %>
+  <%= link_to "未対応に変更", admins_contact_path, method: :patch %>
+<% else %>
+  <%= link_to "対応済みに変更", admins_contact_path, method: :patch %>
+<% end %>

@@ -1,2 +1,19 @@
-<h1>Admins::Users#edit</h1>
-<p>Find me in app/views/admins/users/edit.html.erb</p>
+<h1><%= @user.name %>様 編集</h1>
+<%= form_with model: @user, url: admins_user_path, local: true do |f| %>
+  <%= f.label "氏名" %>
+  <%= f.text_field :name %>
+  
+  <%= f.label "郵便番号" %>
+  <%= f.text_field :postal_code %>
+  
+  <%= f.label "住所" %>
+  <%= f.text_field :address %>
+  
+  <%= f.label "メールアドレス" %>
+  <%= f.text_field :email %>
+  
+  <%= f.label "会員状況" %>
+  <%= f.select :status, [["有効", true], ["無効", false]] %>
+  
+  <%= f.submit %>
+<% end %>

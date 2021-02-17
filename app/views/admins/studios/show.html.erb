@@ -1,2 +1,43 @@
-<h1>Admins::Studios#show</h1>
-<p>Find me in app/views/admins/studios/show.html.erb</p>
+<table>
+  <tr>
+    <th>名前</th>
+    <th>平日料金</th>
+    <th>土日祝日料金</th>
+    <th>広さ</th>
+  </tr>
+  <tr>
+    <td><%= @studio.name %></td>
+    <td><%= @studio.weekday_fee %></td>
+    <td><%= @studio.weekend_fee %></td>
+    <td><%= @studio.area %>帖</td>
+  </tr>
+</table>
+<%= link_to "編集", edit_admins_studio_path(@studio) %>
+
+<h2>備え付け機材</h2>
+<table>
+  <tr>
+    <th>機材名</th>
+    <th>ジャンル</th>
+    <th></th>
+  </tr>
+  <% @studio.equipments.each do |equipment| %>
+    <tr>
+      <td><%= equipment.name %></td>
+      <td><%= equipment.equipment_genre.name %></td>
+      <th><%= link_to "削除", admins_studio_equipment_path(equipment), method: :delete %></th>
+    </tr>
+  <% end %>
+</table>
+<%= form_with model: @equipment, url: admins_studio_equipments_path(@studio), local: true do |f| %>
+  <%= f.label "機材名" %>
+  <%= f.text_field :name %>
+  
+  <%= f.label "ジャンル"%>
+  <%= f.collection_select(:equipment_genre_id, @equipment_genres, :id, :name)%>
+  
+  <%= f.hidden_field :studio_id, value: params[:id] %>
+  
+  <%= f.submit %>
+<% end %>
+

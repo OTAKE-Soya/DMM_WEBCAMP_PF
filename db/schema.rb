@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_02_09_172152) do
     t.string "email"
     t.string "title"
     t.text "body"
-    t.boolean "processed_status"
+    t.boolean "processed_status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,27 @@
+<%= form_with model: @paid_equipment, url: admins_paid_equipments_path, local: true do |f| %>
+  <%= f.label "機材名"%>
+  <%= f.text_field :name %>
+  
+  <%= f.label "ジャンル"%>
+  <%= f.collection_select(:equipment_genre_id, @equipment_genres, :id, :name)%>
+  
+  <%= f.label "1時間当たり料金"%>
+  <%= f.text_field :fee %>
+  
+  <%= f.submit %>
+<% end %>
+
+<table>
+  <tr>
+    <th>機材名</th>
+    <th>ジャンル</th>
+    <th>1時間当たり料金</th>
+  </tr>
+  <% @paid_equipments.each do |paid_equipment| %>
+    <tr>
+      <td><%= paid_equipment.name %></td>
+      <td><%= paid_equipment.equipment_genre.name %></td>
+      <td><%= paid_equipment.fee %></td>
+    </tr>
+  <% end %>
+</table>

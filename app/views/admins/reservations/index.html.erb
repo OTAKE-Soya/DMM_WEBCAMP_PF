@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <th>予約番号</th>
+    <th>会員名</th>
+    <th>予約スタジオ</th>
+    <th>開始時</th>
+    <th>終了時</th>
+    <th></th>
+  </tr>
+  <% @reservations.reverse_each do |reservation| %>
+    <tr>
+      <td><%= link_to reservation.id, admins_reservation_path %></td>
+      <td><%= reservation.user.name %></td>
+      <td><%= reservation.studio.name %></td>
+      <td><%= reservation.start %></td>
+      <td><%= reservation.end %></td>
+      <td><%= link_to "詳細", admins_reservation_path(reservation) %></td>
+    </tr>
+  <% end %>
+</table>

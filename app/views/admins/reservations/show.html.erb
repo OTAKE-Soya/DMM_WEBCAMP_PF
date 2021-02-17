@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th>予約番号</th>
+    <th>予約会員名</th>
+    <th>予約スタジオ</th>
+    <th>開始時</th>
+    <th>終了時</th>
+    <th>平日/土日祝</th>
+    <th>料金</th>
+    <th>状況</th>
+  </tr>
+  <tr>
+    <td><%= @reservation.id %></td>
+    <td><%= @reservation.user.name %></td>
+    <td><%= @reservation.studio.name %></td>
+    <td><%= @reservation.start %></td>
+    <td><%= @reservation.end %></td>
+    <td><%= @reservation.weekday_judge %></td>
+    <td><%= @reservation.fee %></td>
+    <td><%= @reservation.status %></td>
+  </tr>
+</table>

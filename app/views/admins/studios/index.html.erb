@@ -1,0 +1,10 @@
+<table>
+  <tr>
+    <th>スタジオ名</th>
+  </tr>
+  <% @studios.each do |studio| %>
+    <tr>
+      <td><%= link_to studio.name, admins_studio_path(studio) %></td>
+    </tr>
+  <% end %>
+</table>

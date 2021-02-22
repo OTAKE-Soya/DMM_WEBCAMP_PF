@@ -9,7 +9,7 @@
   </tr>
   <% @reservations.reverse_each do |reservation| %>
     <tr>
-      <td><%= link_to reservation.id, admins_reservation_path %></td>
+      <td><%= link_to reservation.id, admins_reservation_path(reservation) %></td>
       <td><%= reservation.user.name %></td>
       <td><%= reservation.studio.name %></td>
       <td><%= reservation.start %></td>

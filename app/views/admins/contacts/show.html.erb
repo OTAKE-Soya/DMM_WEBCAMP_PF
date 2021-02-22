@@ -1,9 +1,22 @@
-<%= @contact.title %>
-<%= @contact.name %>
-<%= @contact.body %>
-<%= @contact.status_name %>
-<% if @contact.processed_status %>
-  <%= link_to "未対応に変更", admins_contact_path, method: :patch %>
-<% else %>
-  <%= link_to "対応済みに変更", admins_contact_path, method: :patch %>
-<% end %>
+<table>
+  <tr>
+    <th>ご用件</th>
+    <th>お名前</th>
+    <th>内容</th>
+    <th>対応状況</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><%= @contact.title %></td>
+    <td><%= @contact.name %></td>
+    <td><%= @contact.body %></td>
+    <td><%= @contact.status_name %></td>
+    <td>
+      <% if @contact.processed_status %>
+        <%= link_to "未対応に変更", admins_contact_path, method: :patch %>
+      <% else %>
+        <%= link_to "対応済みに変更", admins_contact_path, method: :patch %>
+      <% end %>
+    </td>
+  </tr>
+</table>

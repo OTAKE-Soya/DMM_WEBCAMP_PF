@@ -8,7 +8,6 @@ class CreateReservations < ActiveRecord::Migration[5.2]
       t.boolean :weekday_judge
       t.integer :total_fee
       t.integer :status
-
       t.timestamps
     end
   end

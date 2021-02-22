@@ -5,7 +5,7 @@
     <th>予約スタジオ</th>
     <th>開始時</th>
     <th>終了時</th>
-    <th>平日/土日祝</th>
+    <th>料金種別</th>
     <th>料金</th>
     <th>状況</th>
   </tr>
@@ -15,8 +15,25 @@
     <td><%= @reservation.studio.name %></td>
     <td><%= @reservation.start %></td>
     <td><%= @reservation.end %></td>
-    <td><%= @reservation.weekday_judge %></td>
-    <td><%= @reservation.fee %></td>
+    <td><%= @reservation.judge_name %></td>
+    <td><%= @reservation.total_fee %></td>
     <td><%= @reservation.status %></td>
   </tr>
+</table>
+<table>
+  <tr>
+    <th>予約機材</th>
+    <th>ジャンル</th>
+    <th>料金</th>
+  </tr>
+  
+  <% @reservation.reserved_equipments.each do |reserved_equipment| %>
+  <tr>
+    <td><%= reserved_equipment.paid_equipment.name %></td>
+    <td><%= reserved_equipment.paid_equipment.equipment_genre.name %></td>
+    <td><%= reserved_equipment.fee %></td>
+    
+  </tr>
+    
+  <% end %>
 </table>

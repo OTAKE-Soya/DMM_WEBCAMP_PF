@@ -3,9 +3,11 @@
     <th>予約番号</th>
     <th>予約会員名</th>
     <th>予約スタジオ</th>
+    <th>予約日</th>
     <th>開始時</th>
     <th>終了時</th>
     <th>料金種別</th>
+    <th>1時間当たり料金</th>
     <th>料金</th>
     <th>状況</th>
   </tr>
@@ -13,9 +15,11 @@
     <td><%= @reservation.id %></td>
     <td><%= @reservation.user.name %></td>
     <td><%= @reservation.studio.name %></td>
-    <td><%= @reservation.start %></td>
-    <td><%= @reservation.end %></td>
+    <td><%= @reservation.start.strftime('%Y年 %m月%d日') %></td>
+    <td><%= @reservation.start.strftime('%H:%M') %></td>
+    <td><%= @reservation.end.strftime('%H:%M') %></td>
     <td><%= @reservation.judge_name %></td>
+    <td><%= @reservation.studio_fee_per_hour %></td>
     <td><%= @reservation.total_fee %></td>
     <td><%= @reservation.status %></td>
   </tr>
@@ -37,3 +41,4 @@
     
   <% end %>
 </table>
+

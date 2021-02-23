@@ -7,7 +7,7 @@ class CreateReservations < ActiveRecord::Migration[5.2]
       t.datetime :end
       t.boolean :weekday_judge
       t.integer :total_fee
-      t.integer :status
+      t.integer :status, default: 0
       t.timestamps
     end
   end

@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_031728) do
     t.datetime "end"
     t.boolean "weekday_judge"
     t.integer "total_fee"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "studio_fee_per_hour"

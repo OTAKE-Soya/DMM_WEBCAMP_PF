@@ -1,9 +1,12 @@
 <%= form_with model: @reservation, local: true do |f| %>
+  <%= f.label "予約日" %>
+  <%= f.date_field :date %>
+
   <%= f.label "開始時間" %>
-  <%= f.datetime_select :start,  use_month_numbers: true, discard_minute: true %>
+  <%= f.time_select :start, discard_minute: true %>:00
   
   <%= f.label "終了時間" %>
-  <%= f.datetime_select :end, use_month_numbers: true, discard_minute: true %>
+  <%= f.time_select :end, discard_minute: true %>:00
   
   <%= f.collection_select :studio_id, @studios, :id, :name %>
   <%= f.hidden_field :user_id, value: current_user.id %>

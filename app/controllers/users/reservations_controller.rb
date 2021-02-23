@@ -8,24 +8,35 @@ class Users::ReservationsController < ApplicationController
   end
   
   def create
-    reservation = Reservation.new(reservation_params)
-    reservation.total_fee = 0
-    reserved_equipment_params[:paid_equipment_ids].each do |paid_equipment_id|
-      equipment_fee = PaidEquipment.find(paid_equipment_id).fee
-      p reservation.reserved_equipments.build(paid_equipment_id: paid_equipment_id, fee: equipment_fee)
-      reservation.total_fee += equipment_fee
-    end
+    reservation = Reservation.new
+    reservation.start = DateTime.parse("#{reservation_params[:date]} #{reservation_params["start(4i)"]}:00:00")
+    reservation.end = DateTime.parse("#{reservation_params[:date]} #{reservation_params["end(4i)"]}:00:00")
+    reservation.studio_id = reservation_params[:studio_id]
+    reservation.user_id = current_user.id
     
-    if reservation.start === (1..5)
-      reservation.weekday_judge = true
-      reservation.studio_fee_per_hour = reservation.studio.weekday_fee
-    else
-      reservation.weekday_judge = false
-      reservation.studio_fee_per_hour = reservation.studio.weekend_fee
+    if reservation.start < reservation.end
+      reservation.total_fee = 0
+      if reserved_equipment_params[:paid_equipment_ids]
+        total_equipment_fee = 0
+        reserved_equipment_params[:paid_equipment_ids].each do |paid_equipment_id|
+          equipment_fee = PaidEquipment.find(paid_equipment_id).fee
+          reservation.reserved_equipments.build(paid_equipment_id: paid_equipment_id, fee: equipment_fee)
+          total_equipment_fee += equipment_fee
+        end
+      end
+      
+      if reservation.start.wday === (1..5)
+        reservation.weekday_judge = true
+        reservation.studio_fee_per_hour = reservation.studio.weekday_fee
+      else
+        reservation.weekday_judge = false
+        reservation.studio_fee_per_hour = reservation.studio.weekend_fee
+      end
+      reservation.total_fee += (reservation.end.hour - reservation.start.hour) * (reservation.studio_fee_per_hour + total_equipment_fee)
+      
+      reservation.save
     end
-    reservation.total_fee += (reservation.end.hour - reservation.start.hour) * reservation.studio_fee_per_hour
-    
-    reservation.save
+
     # p reservation_params
     # p reserved_equipment_params
     # p reservation
@@ -44,6 +55,7 @@ class Users::ReservationsController < ApplicationController
   private
   def reservation_params
     params.require(:reservation).permit(
+      :date,
       :start,
       :end,
       :studio_id,
@@ -56,4 +68,8 @@ class Users::ReservationsController < ApplicationController
       paid_equipment_ids: []
     )
   end
+  
+  # def reservation_date_params
+    
+  # end
 end

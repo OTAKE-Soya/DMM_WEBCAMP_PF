@@ -6,6 +6,7 @@
     <th>開始時</th>
     <th>終了時</th>
     <th>料金種別</th>
+    <th>1時間当たり料金</th>
     <th>料金</th>
     <th>状況</th>
   </tr>
@@ -16,6 +17,7 @@
     <td><%= @reservation.start %></td>
     <td><%= @reservation.end %></td>
     <td><%= @reservation.judge_name %></td>
+    <td><%= @reservation.studio_fee_per_hour %></td>
     <td><%= @reservation.total_fee %></td>
     <td><%= @reservation.status %></td>
   </tr>

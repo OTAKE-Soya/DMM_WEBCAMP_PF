@@ -5,6 +5,7 @@
     <th>予約日</th>
     <th>開始時</th>
     <th>終了時</th>
+    <th>予約状況</th>
     <th></th>
   </tr>
   <% @reservations.reverse_each do |reservation| %>
@@ -14,6 +15,7 @@
       <td><%= reservation.start.strftime('%Y年 %m月%d日') %></td>
       <td><%= reservation.start.strftime('%H:%M') %></td>
       <td><%= reservation.end.strftime('%H:%M') %></td>
+      <td><%= reservation.status_name %></td>
       <td><%= link_to "詳細", admins_reservation_path(reservation) %></td>
     </tr>
   <% end %>

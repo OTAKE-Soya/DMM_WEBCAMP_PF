@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_031728) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
+    t.string "phone", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", null: false
     t.string "postal_code", null: false

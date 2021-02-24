@@ -25,6 +25,6 @@ class Reservation < ApplicationRecord
   end
   
   def date_linking
-    return start.strftime("%Y%m%d")
+    return start_at.strftime("%Y%m%d")
   end
 end

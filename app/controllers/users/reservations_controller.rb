@@ -13,7 +13,7 @@ class Users::ReservationsController < Users::ApplicationController
     reservation.end_at = DateTime.parse("#{reservation_params[:date]} #{reservation_params["end_at(4i)"]}:00:00")
     reservation.studio_id = reservation_params[:studio_id]
     reservation.user_id = current_user.id
-    if reservation.start_at < reservation.end_at
+    if reservation.start_at < reservation.end_at && reservation.start_at > DateTime.now
       if !Reservation.where('end_at > ? and ? > start_at', reservation.start_at, reservation.end_at).exists?
         reservation.total_fee = 0
         total_equipment_fee = 0

@@ -23,4 +23,8 @@ class Reservation < ApplicationRecord
         return "キャンセル"
     end
   end
+  
+  def date_linking
+    return start.strftime("%Y%m%d")
+  end
 end

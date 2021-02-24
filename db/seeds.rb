@@ -31,7 +31,7 @@ unless User.find_by(id: 20)
       name: "テスト太郎#{n + 1}",
       password: "testtest",
       postal_code: "0000000",
-      address: "東京#{n + 1}区"
+      address: "東京#{n + 1}区",
       phone: "00000000"
     )
   end
@@ -48,21 +48,21 @@ unless Studio.find_by(id: 3)
   end
 end
 
-Studio.all.each do |n|
-  Equipment.creare!([
-    {name: "YAMAHA U-3", studio_id: n, equipment_genre_id: 1},
-    {name: "GK MB150S-III112", studio_id: n, equipment_genre_id: 2},
-    {name: "SONAR Select Force Jungle", studio_id: n, equipment_genre_id: 3},
-    {name: "CD-RW900MK2", studio_id: n, equipment_genre_id: 4}
-  ])
-end
-
 unless EquipmentGenre.find_by(id: 4)
   EquipmentGenre.create!([
     {name: "鍵盤"},
     {name: "アンプ"},
     {name: "ドラム"},
     {name: "その他"}
+  ])
+end
+
+Studio.all.each do |n|
+  Equipment.create!([
+    {name: "YAMAHA U-3", studio_id: n.id, equipment_genre_id: 1},
+    {name: "GK MB150S-III112", studio_id: n.id, equipment_genre_id: 2},
+    {name: "SONAR Select Force Jungle", studio_id: n.id, equipment_genre_id: 3},
+    {name: "CD-RW900MK2", studio_id: n.id, equipment_genre_id: 4}
   ])
 end
 

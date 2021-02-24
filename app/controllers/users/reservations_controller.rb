@@ -24,7 +24,7 @@ class Users::ReservationsController < Users::ApplicationController
             total_equipment_fee += equipment_fee
           end
         end
-        if reservation.start.wday === (1..5)
+        if reservation.start_at.wday === (1..5)
           reservation.weekday_judge = true
           reservation.studio_fee_per_hour = reservation.studio.weekday_fee
         else

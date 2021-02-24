@@ -1,4 +1,4 @@
-class Users::ReservationsController < ApplicationController
+class Users::ReservationsController < Users::ApplicationController
   def new
     @reservation = Reservation.new
     @studios = Studio.all

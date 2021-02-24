@@ -1,4 +1,4 @@
-class Admins::HomesController < ApplicationController
+class Admins::HomesController < Admins::ApplicationController
   def top
     @contacts = Contact.all
   end

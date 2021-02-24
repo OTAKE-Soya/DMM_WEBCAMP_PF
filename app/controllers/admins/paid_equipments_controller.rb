@@ -1,4 +1,4 @@
-class Admins::PaidEquipmentsController < ApplicationController
+class Admins::PaidEquipmentsController < Admins::ApplicationController
   def index
     @paid_equipment = PaidEquipment.new
     @equipment_genres = EquipmentGenre.all

@@ -1,4 +1,4 @@
-class Admins::ContactsController < ApplicationController
+class Admins::ContactsController < Admins::ApplicationController
   def index
     @contacts = Contact.all
   end

@@ -13,28 +13,28 @@ class Users::ReservationsController < Users::ApplicationController
     reservation.end = DateTime.parse("#{reservation_params[:date]} #{reservation_params["end(4i)"]}:00:00")
     reservation.studio_id = reservation_params[:studio_id]
     reservation.user_id = current_user.id
-    
     if reservation.start < reservation.end
-      reservation.total_fee = 0
-      if reserved_equipment_params[:paid_equipment_ids]
+      if !Reservation.where('end > ? and ? > start', reservation.start, reservation.end).exists?
+        reservation.total_fee = 0
         total_equipment_fee = 0
-        reserved_equipment_params[:paid_equipment_ids].each do |paid_equipment_id|
-          equipment_fee = PaidEquipment.find(paid_equipment_id).fee
-          reservation.reserved_equipments.build(paid_equipment_id: paid_equipment_id, fee: equipment_fee)
-          total_equipment_fee += equipment_fee
+        if reserved_equipment_params[:paid_equipment_ids]
+          reserved_equipment_params[:paid_equipment_ids].each do |paid_equipment_id|
+            equipment_fee = PaidEquipment.find(paid_equipment_id).fee
+            reservation.reserved_equipments.build(paid_equipment_id: paid_equipment_id, fee: equipment_fee)
+            total_equipment_fee += equipment_fee
+          end
         end
+        if reservation.start.wday === (1..5)
+          reservation.weekday_judge = true
+          reservation.studio_fee_per_hour = reservation.studio.weekday_fee
+        else
+          reservation.weekday_judge = false
+          reservation.studio_fee_per_hour = reservation.studio.weekend_fee
+        end
+        reservation.total_fee += (reservation.end.hour - reservation.start.hour) * (reservation.studio_fee_per_hour + total_equipment_fee)
+        
+        reservation.save
       end
-      
-      if reservation.start.wday === (1..5)
-        reservation.weekday_judge = true
-        reservation.studio_fee_per_hour = reservation.studio.weekday_fee
-      else
-        reservation.weekday_judge = false
-        reservation.studio_fee_per_hour = reservation.studio.weekend_fee
-      end
-      reservation.total_fee += (reservation.end.hour - reservation.start.hour) * (reservation.studio_fee_per_hour + total_equipment_fee)
-      
-      reservation.save
     end
 
     # p reservation_params

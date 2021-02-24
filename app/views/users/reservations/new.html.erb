@@ -1,6 +1,6 @@
 <%= form_with model: @reservation, local: true do |f| %>
   <%= f.label "予約日" %>
-  <%= f.date_field :date %>
+  <%= f.date_field :date , start_day: Time.now %>
 
   <%= f.label "開始時間" %>
   <%= f.time_select :start, discard_minute: true %>:00

@@ -1,4 +1,4 @@
-class Admins::StudiosController < ApplicationController
+class Admins::StudiosController < Admins::ApplicationController
   def index
     @studios = Studio.all
   end

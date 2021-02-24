@@ -1,4 +1,4 @@
-class Admins::EquipmentsController < ApplicationController
+class Admins::EquipmentsController < Admins::ApplicationController
   def create
     equipment = Equipment.new(equipment_params)
     p equipment

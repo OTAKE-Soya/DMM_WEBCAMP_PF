@@ -1,4 +1,4 @@
-class Users::UsersController < ApplicationController
+class Users::UsersController < Users::ApplicationController
   def edit
   end
 

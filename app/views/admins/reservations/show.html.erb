@@ -9,7 +9,7 @@
     <th>料金種別</th>
     <th>1時間当たり料金</th>
     <th>料金</th>
-    <th>状況</th>
+    <th>予約状況</th>
   </tr>
   <tr>
     <td><%= @reservation.id %></td>
@@ -21,7 +21,7 @@
     <td><%= @reservation.judge_name %></td>
     <td><%= @reservation.studio_fee_per_hour %></td>
     <td><%= @reservation.total_fee %></td>
-    <td><%= @reservation.status %></td>
+    <td><%= @reservation.status_name %></td>
   </tr>
 </table>
 <table>

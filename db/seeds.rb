@@ -20,6 +20,7 @@ unless User.find_by(email: "sss@sss")
     password: "ssssss",
     postal_code: "0000000",
     address: "東京都渋谷区",
+    phone: "00000000"
   )
 end
 
@@ -31,6 +32,7 @@ unless User.find_by(id: 20)
       password: "testtest",
       postal_code: "0000000",
       address: "東京#{n + 1}区"
+      phone: "00000000"
     )
   end
 end
@@ -46,6 +48,15 @@ unless Studio.find_by(id: 3)
   end
 end
 
+Studio.all.each do |n|
+  Equipment.creare!([
+    {name: "YAMAHA U-3", studio_id: n, equipment_genre_id: 1},
+    {name: "GK MB150S-III112", studio_id: n, equipment_genre_id: 2},
+    {name: "SONAR Select Force Jungle", studio_id: n, equipment_genre_id: 3},
+    {name: "CD-RW900MK2", studio_id: n, equipment_genre_id: 4}
+  ])
+end
+
 unless EquipmentGenre.find_by(id: 4)
   EquipmentGenre.create!([
     {name: "鍵盤"},
@@ -54,4 +65,11 @@ unless EquipmentGenre.find_by(id: 4)
     {name: "その他"}
   ])
 end
+
+PaidEquipment.create!([
+  {name: "Roland JC-120", equipment_genre_id: 2, fee: 200},
+  {name: "Gliga Gems II(コントラバス)", equipment_genre_id: 4, fee: 300},
+  {name: "SM-58", equipment_genre_id: 4, fee: 100},
+  {name: "Canopus Neo Vintage セット", equipment_genre_id: 3, fee: 500}
+])
 

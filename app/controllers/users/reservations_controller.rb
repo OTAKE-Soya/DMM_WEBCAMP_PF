@@ -9,8 +9,8 @@ class Users::ReservationsController < Users::ApplicationController
   
   def create
     reservation = Reservation.new
-    reservation.start_at = DateTime.parse("#{reservation_params[:date]} #{reservation_params["start(4i)"]}:00:00")
-    reservation.end_at = DateTime.parse("#{reservation_params[:date]} #{reservation_params["end(4i)"]}:00:00")
+    reservation.start_at = DateTime.parse("#{reservation_params[:date]} #{reservation_params["start_at(4i)"]}:00:00")
+    reservation.end_at = DateTime.parse("#{reservation_params[:date]} #{reservation_params["end_at(4i)"]}:00:00")
     reservation.studio_id = reservation_params[:studio_id]
     reservation.user_id = current_user.id
     if reservation.start_at < reservation.end_at

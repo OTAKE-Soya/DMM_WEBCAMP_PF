@@ -1,11 +1,41 @@
-<h1>会員情報</h1>
-名前
-<%= @user.name %>
-郵便番号
-<%= @user.postal_code %>
-住所
-<%= @user.address %>
-メールアドレス
-<%= @user.email %>
+<div class="container">
+  <div class="row">
+    <h2>会員情報</h2>
+  </div>
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th>名前</th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= @user.postal_code %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @user.address %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @user.phone %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 
 <%= link_to "編集", edit_user_registration_path %>

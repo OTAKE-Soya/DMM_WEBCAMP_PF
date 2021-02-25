@@ -1,27 +1,45 @@
-<%= form_with model: @paid_equipment, url: admins_paid_equipments_path, local: true do |f| %>
-  <%= f.label "機材名"%>
-  <%= f.text_field :name %>
-  
-  <%= f.label "ジャンル"%>
-  <%= f.collection_select(:equipment_genre_id, @equipment_genres, :id, :name)%>
-  
-  <%= f.label "1時間当たり料金"%>
-  <%= f.text_field :fee %>
-  
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <h2>有料機材一覧・追加</h2>
+  </div>
+  <div class="row">
+    <%= form_with model: @paid_equipment, url: admins_paid_equipments_path, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label "機材名"%>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label "ジャンル"%><br>
+      <%= f.collection_select(:equipment_genre_id, @equipment_genres, :id, :name) %>
+    </div>
+    <div class="form-group">
+      <%= f.label "1時間当たり料金"%>
+      <%= f.text_field :fee, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "追加", class: "form-control" %>
+    </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th>機材名</th>
+        <th>ジャンル</th>
+        <th>1時間当たり料金</th>
+        <th></th>
+      </tr>
+      <% @paid_equipments.each do |paid_equipment| %>
+        <tr>
+          <td><%= paid_equipment.name %></td>
+          <td><%= paid_equipment.equipment_genre.name %></td>
+          <td><%= paid_equipment.fee %></td>
+          <td><%= link_to "削除", admins_paid_equipment_path(paid_equipment.id), method: :delete %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <th>機材名</th>
-    <th>ジャンル</th>
-    <th>1時間当たり料金</th>
-  </tr>
-  <% @paid_equipments.each do |paid_equipment| %>
-    <tr>
-      <td><%= paid_equipment.name %></td>
-      <td><%= paid_equipment.equipment_genre.name %></td>
-      <td><%= paid_equipment.fee %></td>
-    </tr>
-  <% end %>
-</table>
+
+

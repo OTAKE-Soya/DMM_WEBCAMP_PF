@@ -11,13 +11,14 @@ class Admins::PaidEquipmentsController < Admins::ApplicationController
     redirect_to request.referer
   end
 
-  def show
-  end
-
-  def new
-  end
-
   def edit
+    redirect_to admins_paid_equipments_path
+  end
+  
+  def destroy
+    paid_equipment = PaidEquipment.find(params[:id])
+    paid_equipment.destroy
+    redirect_to admins_paid_equipments_path
   end
   
   private

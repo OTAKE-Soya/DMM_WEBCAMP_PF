@@ -1,41 +1,59 @@
-<table>
-  <tr>
-    <th>予約番号</th>
-    <th>予約会員名</th>
-    <th>予約スタジオ</th>
-    <th>開始時</th>
-    <th>終了時</th>
-    <th>料金種別</th>
-    <th>1時間当たり料金</th>
-    <th>料金</th>
-    <th>状況</th>
-  </tr>
-  <tr>
-    <td><%= @reservation.id %></td>
-    <td><%= @reservation.user.name %></td>
-    <td><%= @reservation.studio.name %></td>
-    <td><%= @reservation.start_at %></td>
-    <td><%= @reservation.end_at %></td>
-    <td><%= @reservation.judge_name %></td>
-    <td><%= @reservation.studio_fee_per_hour %></td>
-    <td><%= @reservation.total_fee %></td>
-    <td><%= @reservation.status %></td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <th>予約機材</th>
-    <th>ジャンル</th>
-    <th>料金</th>
-  </tr>
-  
-  <% @reservation.reserved_equipments.each do |reserved_equipment| %>
-  <tr>
-    <td><%= reserved_equipment.paid_equipment.name %></td>
-    <td><%= reserved_equipment.paid_equipment.equipment_genre.name %></td>
-    <td><%= reserved_equipment.fee %></td>
-    
-  </tr>
-    
-  <% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th>予約スタジオ</th>
+        <td><%= @reservation.studio.name %></td>
+      <tr>
+        <th>予約日</th>
+        <td><%= @reservation.start_at.strftime('%Y年%m/%d') %></td>
+      </tr>
+      <tr>
+        <th>開始時</th>
+        <td><%= @reservation.start_at.strftime('%H:%M') %></td>
+      </tr>
+      <tr>
+        <th>終了時</th>
+        <td><%= @reservation.end_at.strftime('%H:%M') %></td>
+      </tr>
+      <tr>
+        <th>料金種別</th>
+        <td><%= @reservation.judge_name %>料金</td>
+      </tr>
+      <tr>
+        <th>1時間当たり料金</th>
+        <td><%= @reservation.studio_fee_per_hour %></td>
+      </tr>
+      <tr>
+        <th>料金</th>
+        <td><%= @reservation.total_fee %></td>
+      </tr>
+      <tr>
+        <th>状況</th>
+        <td><%= @reservation.status_name %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th>予約機材</th>
+        <th>ジャンル</th>
+        <th>料金</th>
+      </tr>
+      
+      <% @reservation.reserved_equipments.each do |reserved_equipment| %>
+      <tr>
+        <td><%= reserved_equipment.paid_equipment.name %></td>
+        <td><%= reserved_equipment.paid_equipment.equipment_genre.name %></td>
+        <td><%= reserved_equipment.fee %></td>
+        
+      </tr>
+        
+      <% end %>
+    </table>
+
+  </div>
+</div>
+
+

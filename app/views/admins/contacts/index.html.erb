@@ -1,24 +1,32 @@
-<table>
-  <tr>
-    <th>用件</th>
-    <th>名前</th>
-    <th>問い合わせ日時</th>
-    <th>対応状況</th>
-  </tr>
-  <% @contacts.where(processed_status: false).each do |contact| %>
-    <tr>
-      <td><%= link_to contact.title, admins_contact_path(contact) %></td>
-      <td><%= contact.name %></td>
-      <td><%= contact.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-      <td><%= contact.status_name %></td>
-    </tr>
-  <% end %>
-  <% @contacts.where(processed_status: true).reverse_each do |contact| %>
-    <tr>
-      <td><%= link_to contact.title, admins_contact_path(contact) %></td>
-      <td><%= contact.name %></td>
-      <td><%= contact.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-      <td><%= contact.status_name %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <h2>お問い合わせ一覧</h2>
+  </div>
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th>用件</th>
+        <th>名前</th>
+        <th>問い合わせ日時</th>
+        <th>対応状況</th>
+      </tr>
+      <% @contacts.where(processed_status: false).each do |contact| %>
+        <tr>
+          <td><%= link_to contact.title, admins_contact_path(contact) %></td>
+          <td><%= contact.name %></td>
+          <td><%= contact.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= contact.status_name %></td>
+        </tr>
+      <% end %>
+      <% @contacts.where(processed_status: true).reverse_each do |contact| %>
+        <tr>
+          <td><%= link_to contact.title, admins_contact_path(contact) %></td>
+          <td><%= contact.name %></td>
+          <td><%= contact.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= contact.status_name %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+

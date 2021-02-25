@@ -1,22 +1,35 @@
-<table>
-  <tr>
-    <th>ご用件</th>
-    <th>お名前</th>
-    <th>内容</th>
-    <th>対応状況</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td><%= @contact.title %></td>
-    <td><%= @contact.name %></td>
-    <td><%= @contact.body %></td>
-    <td><%= @contact.status_name %></td>
-    <td>
-      <% if @contact.processed_status %>
-        <%= link_to "未対応に変更", admins_contact_path, method: :patch %>
-      <% else %>
-        <%= link_to "対応済みに変更", admins_contact_path, method: :patch %>
-      <% end %>
-    </td>
-  </tr>
-</table>
+<div class="container">
+  <div class="row">
+    <h2>お問い合わせ詳細</h2>
+  </div>
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th>ご用件</th>
+        <td><%= @contact.title %></td>
+      </tr>
+      <tr>
+        <th>お名前</th>
+        <td><%= @contact.name %></td>
+      </tr>
+      <tr>
+        <th>内容</th>
+        <td><%= @contact.body %></td>
+      </tr>
+      <tr>
+        <th>対応状況</th>
+        <td><%= @contact.status_name %></td>
+      </tr>
+      <tr>
+        <td>
+          <% if @contact.processed_status %>
+            <%= link_to "未対応に変更", admins_contact_path, method: :patch %>
+          <% else %>
+            <%= link_to "対応済みに変更", admins_contact_path, method: :patch %>
+          <% end %>
+        </td>
+      </tr>
+    </table>    
+  </div>
+</div>
+

@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get "/about", to: "homes#about"
   get "/access", to: "homes#access"
-  get "/studios", to: "studios#index"
+  resources :studios, only: [:index, :show]
+  # get "/studios", to: "studios#index"
+  # get "/studios/"
   resource :contact, only: [:new, :create]
   # get "/contact", to: "contacts#new"
   # post "/contact", to: "contacts#create"

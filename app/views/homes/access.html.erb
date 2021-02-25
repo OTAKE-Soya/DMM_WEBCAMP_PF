@@ -1,16 +1,27 @@
-<script async src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
-</script>
-<body>
-<div id="map" style="height:400px; width:600px"></div>
-<script>
-  let map;
-  function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 35.6615518, lng: 139.666785},
-      zoom: 17
-    });
-  }
-  console.log("hello")
-</script>
-〒155-0031 東京都世田谷区北沢2丁目24-2
-下北沢駅から徒歩0分
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div id="map" style="height:400px; width:600px" class="center-block"></div>
+      </div>
+      
+    </div>
+    <div class="row">
+      <p>〒155-0031 東京都世田谷区北沢2丁目24-2</p>
+      <p>下北沢駅から徒歩0分</p>      
+    </div>
+  </div>
+  <script async src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap"></script>
+  <script>
+    let map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 35.6615518, lng: 139.666785},
+        zoom: 17
+      });
+    }
+    console.log("hello")
+  </script>
+
+</main>
+

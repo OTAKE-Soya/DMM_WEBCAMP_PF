@@ -1,10 +1,18 @@
-<table>
-  <tr>
-    <th>スタジオ名</th>
-  </tr>
-  <% @studios.each do |studio| %>
-    <tr>
-      <td><%= link_to studio.name, admins_studio_path(studio) %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <h2>スタジオ一覧</h2>
+  </div>
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th>スタジオ名</th>
+      </tr>
+      <% @studios.each do |studio| %>
+        <tr>
+          <td><%= link_to studio.name, admins_studio_path(studio) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+

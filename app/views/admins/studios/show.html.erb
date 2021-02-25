@@ -1,43 +1,70 @@
-<table>
-  <tr>
-    <th>名前</th>
-    <th>平日料金</th>
-    <th>土日祝日料金</th>
-    <th>広さ</th>
-  </tr>
-  <tr>
-    <td><%= @studio.name %></td>
-    <td><%= @studio.weekday_fee %></td>
-    <td><%= @studio.weekend_fee %></td>
-    <td><%= @studio.area %>帖</td>
-  </tr>
-</table>
+<div class="container">
+  <div class="row">
+    <h2>スタジオ詳細</h2>
+  </div>
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th>名前</th>
+        <td><%= @studio.name %></td>
+      </tr>
+      <tr>
+        <th>平日料金</th>
+        <td><%= @studio.weekday_fee %></td>
+      </tr>
+      <tr>
+        <th>土日祝日料金</th>
+        <td><%= @studio.weekend_fee %></td>
+      </tr>
+      <tr>
+        <th>広さ</th>
+        <td><%= @studio.area %>帖</td>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <h2>備え付け機材</h2>
+  </div>
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th>機材名</th>
+        <th>ジャンル</th>
+        <th></th>
+      </tr>
+      <% @studio.equipments.each do |equipment| %>
+        <tr>
+          <td><%= equipment.name %></td>
+          <td><%= equipment.equipment_genre.name %></td>
+          <th><%= link_to "削除", admins_studio_equipment_path(equipment), method: :delete %></th>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="row">
+    <%= form_with model: @equipment, url: admins_studio_equipments_path(@studio), local: true do |f| %>
+      <div class="form-group">
+        <%= f.label "機材名" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "ジャンル"%><br>
+        <%= f.collection_select(:equipment_genre_id, @equipment_genres, :id, :name)%>
+      </div>
+      <div class="form-group">
+        <%= f.hidden_field :studio_id, value: params[:id], class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "追加", class: "form-control" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
 <%= link_to "編集", edit_admins_studio_path(@studio) %>
 
-<h2>備え付け機材</h2>
-<table>
-  <tr>
-    <th>機材名</th>
-    <th>ジャンル</th>
-    <th></th>
-  </tr>
-  <% @studio.equipments.each do |equipment| %>
-    <tr>
-      <td><%= equipment.name %></td>
-      <td><%= equipment.equipment_genre.name %></td>
-      <th><%= link_to "削除", admins_studio_equipment_path(equipment), method: :delete %></th>
-    </tr>
-  <% end %>
-</table>
-<%= form_with model: @equipment, url: admins_studio_equipments_path(@studio), local: true do |f| %>
-  <%= f.label "機材名" %>
-  <%= f.text_field :name %>
-  
-  <%= f.label "ジャンル"%>
-  <%= f.collection_select(:equipment_genre_id, @equipment_genres, :id, :name)%>
-  
-  <%= f.hidden_field :studio_id, value: params[:id] %>
-  
-  <%= f.submit %>
-<% end %>
+
+
+
 

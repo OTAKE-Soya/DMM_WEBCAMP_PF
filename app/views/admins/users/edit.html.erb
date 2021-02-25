@@ -1,19 +1,35 @@
-<h1><%= @user.name %>様 編集</h1>
-<%= form_with model: @user, url: admins_user_path, local: true do |f| %>
-  <%= f.label "氏名" %>
-  <%= f.text_field :name %>
-  
-  <%= f.label "郵便番号" %>
-  <%= f.text_field :postal_code %>
-  
-  <%= f.label "住所" %>
-  <%= f.text_field :address %>
-  
-  <%= f.label "メールアドレス" %>
-  <%= f.text_field :email %>
-  
-  <%= f.label "会員状況" %>
-  <%= f.select :status, [["有効", true], ["無効", false]] %>
-  
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <h2><%= @user.name %>様 情報編集</h2>
+  </div>
+  <div class="row">
+    <%= form_with model: @user, url: admins_user_path, local: true do |f| %>
+      <div class="form-group">
+      <%= f.label "氏名" %>
+      <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+      <%= f.label "郵便番号" %>
+      <%= f.text_field :postal_code, class: "form-control" %>
+      </div>
+      <div class="form-group">
+      <%= f.label "住所" %>
+      <%= f.text_field :address, class: "form-control" %>
+      </div>
+      <div class="form-group">
+      <%= f.label "メールアドレス" %>
+      <%= f.text_field :email, class: "form-control" %>
+      </div>
+      <div class="form-group">
+      <%= f.label "会員状況" %>
+      <%= f.select :status, [["有効", true], ["無効", false]], class: "form-control" %>
+      </div>
+      <div class="form-group">
+      <%= f.submit "更新", class: "form-control" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+

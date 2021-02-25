@@ -1,24 +1,30 @@
-<table>
-  <tr>
-    <th>予約日</th>
-    <th>開始時間</th>
-    <th>終了時間</th>
-    <th>使用スタジオ</th>
-    <th>料金種別</th>
-    <th>料金</th>
-    <th>予約状況</th>
-    <th></th>
-  </tr>
-  <% @reservations.each do |reservation| %>
-    <tr>
-      <td><%= reservation.start_at.strftime('%Y年 %m月%d日') %></td>
-      <td><%= reservation.start_at.strftime('%H:%M') %></td>
-      <td><%= reservation.end_at.strftime('%H:%M') %></td>
-      <td><%= reservation.studio.name %></td>
-      <td><%= reservation.judge_name %></td>
-      <td><%= reservation.total_fee %></td>
-      <td><%= reservation.status_name %></td>
-      <td><%= link_to "詳細", reservation_path(reservation) %></td>
-    </tr>
-<% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th>予約日</th>
+        <th>開始時間</th>
+        <th>終了時間</th>
+        <th>使用スタジオ</th>
+        <th>料金種別</th>
+        <th>料金</th>
+        <th>予約状況</th>
+        <th></th>
+      </tr>
+      <% @reservations.each do |reservation| %>
+        <tr>
+          <td><%= reservation.start_at.strftime('%Y年%m/%d') %></td>
+          <td><%= reservation.start_at.strftime('%H:%M') %></td>
+          <td><%= reservation.end_at.strftime('%H:%M') %></td>
+          <td><%= reservation.studio.name %></td>
+          <td><%= reservation.judge_name %></td>
+          <td><%= reservation.total_fee %></td>
+          <td><%= reservation.status_name %></td>
+          <td><%= link_to "詳細", reservation_path(reservation) %></td>
+        </tr>
+    <% end %>
+    </table>
+
+  </div>
+</div>
+

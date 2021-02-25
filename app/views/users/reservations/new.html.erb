@@ -1,24 +1,40 @@
-<%= form_with model: @reservation, local: true do |f| %>
-  <%= f.label "予約日" %>
-  <%= f.date_field :date, start_day: Time.now %>
+<div class="container">
+  <div class="row">
+    <%= form_with model: @reservation, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label "予約日" %>
+        <%= f.date_field :date, start_day: Time.now, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "開始時間" %>
+        <%= f.time_select :start_at, discard_minute: true, class: "form-control" %>:00
+      </div>
+      <div class="form-group">
+        <%= f.label "終了時間" %>
+        <%= f.time_select :end_at, discard_minute: true, class: "form-control" %>:00
+      </div>
+      <div class="form-group">
+        <%= f.collection_select :studio_id, @studios, :id, :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.hidden_field :user_id, value: current_user.id, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <% @paid_equipments.each_with_index do |paid_equipment, i| %>
+          <div>
+            <%= label_tag "reservation_paid_equipment_ids_#{i}", paid_equipment.name %>
+            <%= check_box_tag "reservation[paid_equipment_ids][]", paid_equipment.id, nil, id: "reservation_paid_equipment_ids_#{i}", class: "form-control", style: "transform: scale(0.5)" %>
+          </div>
+            
+        <% end %>
+      </div>
+      <%#= f.collection_check_boxes :reserved_equipment_ids, @paid_equipments, :id, :name %>
+      <div class="form-group">
+        <%= f.submit %>
+      </div>
+    <% end %>
+    
+  </div>
+  <%= link_to "予約一覧", reservations_path %>
+</div>
 
-  <%= f.label "開始時間" %>
-  <%= f.time_select :start_at, discard_minute: true %>:00
-  
-  <%= f.label "終了時間" %>
-  <%= f.time_select :end_at, discard_minute: true %>:00
-  
-  <%= f.collection_select :studio_id, @studios, :id, :name %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  
-  <% @paid_equipments.each_with_index do |paid_equipment, i| %>
-    <%= label_tag "reservation_paid_equipment_ids_#{i}", paid_equipment.name %>
-    <%= check_box_tag "reservation[paid_equipment_ids][]", paid_equipment.id, nil, id: "reservation_paid_equipment_ids_#{i}" %>
-  <% end %>
-  <%#= f.collection_check_boxes :reserved_equipment_ids, @paid_equipments, :id, :name %>
-  
-  
-  <%= f.submit %>
-<% end %>
-
-<%= link_to "予約一覧", reservations_path %>

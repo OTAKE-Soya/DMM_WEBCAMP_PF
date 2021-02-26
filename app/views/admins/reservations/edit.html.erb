@@ -1,2 +1,12 @@
-<h1>Admins::Reservaions#edit</h1>
-<p>Find me in app/views/admins/reservaions/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h2>予約編集</h2>
+  </div>
+  <div class="row">
+    <%= form_with model: @reservation, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label %>
+      </div>
+    <% end %>
+  </div>
+</div>

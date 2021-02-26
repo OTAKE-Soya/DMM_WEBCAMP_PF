@@ -4,7 +4,11 @@
       <div class="col text-center">
         <h1>STUDIO "S"へようこそ！</h1>
         <p>STUDIO "S"は下北沢駅にある音楽スタジオです</p>
-        <p>ご予約は<%= link_to "会員登録", new_user_registration_path %>すればだれでもご利用いただけます</p>
+        <% if user_signed_in? %>
+          <p>スタジオのご利用は<%= link_to "予約ページ", new_reservation_path %>から承ります</p>
+        <% else %>
+          <p>スタジオのご予約は<%= link_to "会員登録", new_user_registration_path %>すればだれでもご利用いただけます</p>
+        <% end %>
       </div>
     </div>
   </div>

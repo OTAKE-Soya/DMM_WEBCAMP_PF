@@ -6,31 +6,31 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "users/shared/error_messages", resource: resource %>
         
-        <div class="from-group">
+        <div class="form-group">
           <%= f.label "氏名" %>
           <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control"  %>
         </div>
         
-        <div class="from-group">
+        <div class="form-group">
           <%= f.label "郵便番号" %>
           <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: "form-control"  %>
         </div>
         
-        <div class="from-group">
+        <div class="form-group">
           <%= f.label "住所" %>
           <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control"  %>
         </div>
-        <div class="from-group">
+        <div class="form-group">
           <%= f.label "電話番号（ハイフンなし半角）" %>
           <%= f.text_field :phone, autocomplete: true, autocomplete: "phone", class: "form-control"  %>
         </div>
       
-        <div class="from-group">
+        <div class="form-group">
           <%= f.label "メールアドレス" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"  %>
         </div>
       
-        <div class="from-group">
+        <div class="form-group">
           <%= f.label "パスワード" %>
           <% if @minimum_password_length %>
           <em>(英数字<%= @minimum_password_length %>文字以上)</em>
@@ -38,13 +38,13 @@
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control"  %>
         </div>
       
-        <div class="from-group">
+        <div class="form-group">
           <%= f.label "パスワード（確認）" %>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"  %>
         </div>
       
-        <div class="actions">
-          <%= f.submit "Sign up", class: "form-control" %>
+        <div class="form-group">
+          <%= f.submit "登録", class: "form-control" %>
         </div>
       <% end %>
   </div>

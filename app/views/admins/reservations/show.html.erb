@@ -50,14 +50,14 @@
     <table class="table">
       <tr>
         <th>予約機材</th>
-        <th>ジャンル</th>
+        <!--<th>ジャンル</th>-->
         <th>料金</th>
       </tr>
       
       <% @reservation.reserved_equipments.each do |reserved_equipment| %>
       <tr>
-        <td><%= reserved_equipment.paid_equipment.name %></td>
-        <td><%= reserved_equipment.paid_equipment.equipment_genre.name %></td>
+        <td><%= reserved_equipment.name %></td>
+        <!--<td><%#= reserved_equipment.paid_equipment.equipment_genre.name %></td>-->
         <td><%= reserved_equipment.fee %></td>
         
       </tr>

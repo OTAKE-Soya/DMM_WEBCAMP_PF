@@ -20,7 +20,8 @@ class Users::ReservationsController < Users::ApplicationController
         if reserved_equipment_params[:paid_equipment_ids]
           reserved_equipment_params[:paid_equipment_ids].each do |paid_equipment_id|
             equipment_fee = PaidEquipment.find(paid_equipment_id).fee
-            reservation.reserved_equipments.build(paid_equipment_id: paid_equipment_id, fee: equipment_fee)
+            equipment_name = PaidEquipment.find(paid_equipment_id).name
+            reservation.reserved_equipments.build(name: equipment_name, fee: equipment_fee)
             total_equipment_fee += equipment_fee
           end
         end

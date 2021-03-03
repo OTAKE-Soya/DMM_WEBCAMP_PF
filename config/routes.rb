@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :contacts, only: [:index, :show, :update]
     resources :reservations, except: [:new, :create, :destroy]
+    get "/users/search", to: "users#index"
     resources :users, except: [:new, :create, :destroy]
     resources :studios, except: [:new, :create, :destroy] do
       resources :equipments, only: [:create, :destroy]

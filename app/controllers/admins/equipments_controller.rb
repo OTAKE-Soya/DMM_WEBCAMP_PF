@@ -1,7 +1,6 @@
 class Admins::EquipmentsController < Admins::ApplicationController
   def create
     equipment = Equipment.new(equipment_params)
-    p equipment
     equipment.save!
     redirect_to request.referer
   end

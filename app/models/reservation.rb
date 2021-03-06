@@ -27,4 +27,14 @@ class Reservation < ApplicationRecord
   def date_linking
     return start_at.strftime("%Y%m%d")
   end
+  
+  def fix_day_fee
+    if start_at.wday === (1..5)
+      self.weekday_judge = true
+      self.studio_fee_per_hour = self.studio.weekday_fee
+    else
+      self.weekday_judge = false
+      self.studio_fee_per_hour = self.studio.weekend_fee
+    end
+  end
 end

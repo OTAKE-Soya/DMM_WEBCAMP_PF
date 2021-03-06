@@ -9,11 +9,7 @@ class Admins::ContactsController < Admins::ApplicationController
   
   def update
     contact = Contact.find(params[:id])
-    if contact.processed_status
-      contact.processed_status = false
-    else
-      contact.processed_status = true
-    end
+    contact.process_update
     contact.save!
     redirect_to admins_contacts_path
   end

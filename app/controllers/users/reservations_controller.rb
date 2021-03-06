@@ -25,24 +25,12 @@ class Users::ReservationsController < Users::ApplicationController
             total_equipment_fee += equipment_fee
           end
         end
-        if reservation.start_at.wday === (1..5)
-          reservation.weekday_judge = true
-          reservation.studio_fee_per_hour = reservation.studio.weekday_fee
-        else
-          reservation.weekday_judge = false
-          reservation.studio_fee_per_hour = reservation.studio.weekend_fee
-        end
+        reservation.fix_day_fee
         reservation.total_fee += (reservation.end_at.hour - reservation.start_at.hour) * (reservation.studio_fee_per_hour + total_equipment_fee)
-        
         reservation.save
       end
     end
-
-    # p reservation_params
-    # p reserved_equipment_params
-    # p reservation
     redirect_to reservations_path
-
   end
 
   def show
@@ -69,8 +57,4 @@ class Users::ReservationsController < Users::ApplicationController
       paid_equipment_ids: []
     )
   end
-  
-  # def reservation_date_params
-    
-  # end
 end

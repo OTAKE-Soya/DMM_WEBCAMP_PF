@@ -6,4 +6,12 @@ class Contact < ApplicationRecord
       return "未対応"
     end
   end
+  
+  def process_update
+    if processed_status
+      self.processed_status = false
+    else
+      self.processed_status = true
+    end
+  end
 end

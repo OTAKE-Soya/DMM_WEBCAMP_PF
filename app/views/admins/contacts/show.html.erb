@@ -27,9 +27,9 @@
       <tr>
         <td>
           <% if @contact.processed_status %>
-            <%= link_to "未対応に変更", admins_contact_path, method: :patch %>
+            <%= link_to "未対応に変更", admins_contact_path, method: :patch, class: "btn btn-danger" %>
           <% else %>
-            <%= link_to "対応済みに変更", admins_contact_path, method: :patch %>
+            <%= link_to "対応済みに変更", admins_contact_path, method: :patch, class: "btn btn-success" %>
           <% end %>
         </td>
       </tr>

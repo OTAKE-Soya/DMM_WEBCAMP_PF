@@ -34,7 +34,7 @@
           <td><%= paid_equipment.name %></td>
           <td><%= paid_equipment.equipment_genre.name %></td>
           <td><%= paid_equipment.fee %></td>
-          <td><%= link_to "削除", admins_paid_equipment_path(paid_equipment.id), method: :delete %></td>
+          <td><%= link_to "削除", admins_paid_equipment_path(paid_equipment.id), method: :delete, class: "btn btn-danger" %></td>
         </tr>
       <% end %>
     </table>

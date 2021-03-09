@@ -52,9 +52,13 @@
     
     
       <div class="form-group">
-        <%= f.submit "Update", class: "form-control" %>
+        <%= f.submit "更新", class: "form-control" %>
       </div>
     <% end %>
+    
+  </div>
+  <div class="row">
+    <%= link_to "戻る", :back %>
   </div>
 </div>
 
@@ -64,4 +68,4 @@
 
 <!--<p>Unhappy? <%#= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>-->
 
-<%= link_to "戻る", :back %>
+

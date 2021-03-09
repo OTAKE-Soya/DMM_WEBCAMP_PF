@@ -21,7 +21,7 @@
           <td><%= reservation.start_at.strftime('%H:%M') %></td>
           <td><%= reservation.end_at.strftime('%H:%M') %></td>
           <td><%= reservation.status_name %></td>
-          <td><%= link_to "詳細", admins_reservation_path(reservation) %></td>
+          <td><%= link_to "詳細", admins_reservation_path(reservation), class: "btn btn-info" %></td>
         </tr>
       <% end %>
     </table>

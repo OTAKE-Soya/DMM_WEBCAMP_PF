@@ -1,3 +1,7 @@
-<% if @contacts.find_by(processed_status: false) %>
-  <%= link_to "未対応のお問い合わせが#{@contacts.where(processed_status: false).count}件あります！", admins_contacts_path %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <% if @contacts.find_by(processed_status: false) %>
+      <%= link_to "未対応のお問い合わせが#{@contacts.where(processed_status: false).count}件あります！", admins_contacts_path %>
+    <% end %>
+  </div>
+</div>

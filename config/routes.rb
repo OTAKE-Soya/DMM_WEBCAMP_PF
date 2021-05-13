@@ -25,7 +25,11 @@ Rails.application.routes.draw do
   
   scope module: :users do
     resource :user, only: [:show]
-    resources :reservations
+    resources :reservations do
+      collection do
+        post :confirm
+      end
+    end
   end
 
   

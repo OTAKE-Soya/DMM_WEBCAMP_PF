@@ -21,7 +21,7 @@
             <td><%= reservation.end_at.strftime('%H:%M') %></td>
             <td><%= reservation.studio.name %></td>
             <td><%= reservation.judge_name %></td>
-            <td><%= reservation.total_fee %></td>
+            <td><%= reservation.delimited_fee %></td>
             <td><%= reservation.status_name %></td>
             <td><%= link_to "詳細", reservation_path(reservation), class: "btn btn-info" %></td>
           </tr>

@@ -33,11 +33,11 @@
       </tr>
       <tr>
         <th>1時間当たり料金</th></th>
-        <td><%= @reservation.studio_fee_per_hour %></td>
+        <td><%= @reservation.delimited_hour_fee %></td>
       </tr>
       <tr>
         <th>料金</th></th>
-        <td><%= @reservation.total_fee %></td>
+        <td><%= @reservation.delimited_fee %></td>
       </tr>
       <tr>
         <th>予約状況</th></th>
@@ -58,7 +58,7 @@
       <tr>
         <td><%= reserved_equipment.name %></td>
         <!--<td><%#= reserved_equipment.paid_equipment.equipment_genre.name %></td>-->
-        <td><%= reserved_equipment.fee %></td>
+        <td><%= reserved_equipment.delimited_fee %></td>
         
       </tr>
         

@@ -23,7 +23,7 @@
       <div class="form-group">
         <% @paid_equipments.each_with_index do |paid_equipment, i| %>
           <div>
-            <%= label_tag "reservation_paid_equipment_ids_#{i}", paid_equipment.name %>
+            <%= label_tag "reservation_paid_equipment_ids_#{i}", paid_equipment.name_with_fee %>
             <%= check_box_tag "reservation[paid_equipment_ids][]", paid_equipment.id, nil, id: "reservation_paid_equipment_ids_#{i}", class: "form-control", style: "transform: scale(0.5)" %>
           </div>
             

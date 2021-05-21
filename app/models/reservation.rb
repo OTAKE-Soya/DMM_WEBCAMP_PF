@@ -29,12 +29,20 @@ class Reservation < ApplicationRecord
   end
   
   def fix_day_fee
-    if start_at.wday === (1..5)
+    if (1..5) === start_at.wday 
       self.weekday_judge = true
       self.studio_fee_per_hour = self.studio.weekday_fee
     else
       self.weekday_judge = false
       self.studio_fee_per_hour = self.studio.weekend_fee
     end
+  end
+  
+  def delimited_fee
+    return "#{total_fee.to_s(:delimited)}円"
+  end
+  
+  def delimited_hour_fee
+    return "#{studio_fee_per_hour.to_s(:delimited)}円"
   end
 end
